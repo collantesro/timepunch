@@ -4,7 +4,7 @@ using System;
 public class Methods {
     
 #region Gets
-
+ 
 public List<string> GetUsers()  {
 
     List<string> users = new List<string>(); 
