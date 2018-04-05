@@ -4,18 +4,35 @@
 <head>
     <meta charset="utf-8" />
     <title></title>
+    <style>
+        .content {
+            max-width: 500px;
+            margin: auto;
+            text-align: center;
+        }
+    </style>
 </head>
+
 <body>
+<div class="content">
     <h1>Project time-clock login</h1>
-    Existing User Login<br><br>
-    <form onsubmit="" action="" method="post">
-        User Name:<br />
-        <input type="text" name="username"><br />
-        Password:<br />
-        <input id="password" type="password" name="password"><br />
-        <br>
-        <input type="submit">
-    </form>
-    <a href="/create_account.html">Create Account</a>
+    Time-Punch Login<br><br>
+                           <form onsubmit="" action="" method="post">
+                               <table align="center" width="300">
+                                   <tr>
+                                       <td>User Email</td>
+                                       <td><input type="text" name="username"></td>
+                                   </tr>
+                                   <tr>
+                                       <td>Password</td>
+                                       <td><input id="password" type="password" name="password"></td>
+                                   </tr>
+                                   <tr>
+                                       <td><input type="submit"></td>
+                                       <td><a href="/create_account.html">Create Account</a></td>
+                                   </tr>
+                               </table>
+                           </form>
+</div>
 </body>
 </html>
