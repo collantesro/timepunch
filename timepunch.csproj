@@ -9,4 +9,10 @@
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.2" />
   </ItemGroup>
+  <Target Name="CopyCustomContent" AfterTargets="AfterBuild">
+    <Copy SourceFiles="databases/timepunch.sqlite" DestinationFolder="$(OutDir)/databases" />
+  </Target>
+  <Target Name="CopyCustomContentOnPublish" AfterTargets="Publish">
+    <Copy SourceFiles="databases/timepunch.sqlite" DestinationFolder="$(PublishDir)/databases" />
+  </Target>
 </Project>
