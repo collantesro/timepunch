@@ -13,7 +13,7 @@ namespace timepunch
         {
             // Get the directory of the current assembly:
             string baseDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            return $"Data Source={baseDir}/databases/timepunch.sqlite;Version=3;UTF8Encoding=True;";
+            return $"Data Source={baseDir}/databases/timepunch.sqlite;UTF8Encoding=True;";
         }
 
         #region Gets
