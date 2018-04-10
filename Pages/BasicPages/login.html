@@ -8,6 +8,9 @@
         .content {
             max-width: 500px;
             margin: auto;
+            text-align: right;
+        }
+        .header {
             text-align: center;
         }
     </style>
@@ -15,24 +18,25 @@
 
 <body>
 <div class="content">
-    <h1>Project time-clock login</h1>
-    Time-Punch Login<br><br>
-                           <form onsubmit="" action="" method="post">
-                               <table align="center" width="300">
-                                   <tr>
-                                       <td>User Email</td>
-                                       <td><input type="text" name="username"></td>
-                                   </tr>
-                                   <tr>
-                                       <td>Password</td>
-                                       <td><input id="password" type="password" name="password"></td>
-                                   </tr>
-                                   <tr>
-                                       <td><input type="submit"></td>
-                                       <td><a href="/create_account.html">Create Account</a></td>
-                                   </tr>
-                               </table>
-                           </form>
-</div>
+    <div class="header">
+        <h1>Project time-clock login</h1>
+        Time-Punch Login<br><br></div>
+        <form onsubmit="" action="" method="post">
+            <table align="center">
+                <tr>
+                    <td>User Email</td>
+                    <td><input type="text" name="username" autofocus></td>
+                </tr>
+                <tr>
+                    <td>Password</td>
+                    <td><input id="password" type="password" name="password"></td>
+                </tr>
+                <tr>
+                    <td><input type="submit"></td>
+                    <td><a href="create_account.html">Create Account</a></td>
+                </tr>
+            </table>
+        </form>
+    </div>
 </body>
 </html>
