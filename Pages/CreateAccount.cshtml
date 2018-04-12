@@ -1,2 +1,30 @@
 @page
 @model CreateAccountModel
+
+<div class="content">
+    <div class="header"><h1>Create new account</h1></div>
+    <form onsubmit="" action="" method="post">
+        <table align="center">
+            <tr>
+                <td>Name</td>
+                <td><input type="text" name="firstname" autofocus></td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td><input type="text" name="username"></td>
+            </tr>
+            <tr>
+                <td>Password</td>
+                <td><input id="password" type="password" name="password"></td>
+            </tr>
+            <tr>
+                <td>Confirm password</td>
+                <td><input type="password" name="confirmpassword"></td>
+            </tr>
+            <tr>
+                <td><input type="submit"></td>
+                <td><a href="login.html">Back to login</a></td>
+            </tr>
+        </table>
+    </form>
+</div>
