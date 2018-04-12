@@ -76,3 +76,4 @@ _[Ss]cripts
 !timepunch.sqlite
 .vscode/
 .vs/
+.DS_Store
