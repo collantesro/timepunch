@@ -4,10 +4,10 @@ using System.Text;
 
 public class User
 {
-    enum role {Default, Student, Professor}; 
-    string name; 
-    int id;
-    string passwordHash;
-    string salt;
-    string email;
+    public enum role {Default, Student, Professor}; 
+    public string name {get;set;}
+    public int id {get;set;}
+    public string passwordHash {get;set;}
+    public string salt {get;set;}
+    public string email {get; set;}
 }

@@ -2,51 +2,42 @@ using Microsoft.Data.Sqlite;
 using System.Collections.Generic;
 using System;
 
+
 namespace timepunch
 {
     public partial class DataAccess
     {
 
         #region Gets
-
-        public List<string> GetUsers()
+        public List<User> GetUsers() 
         {
+            List<User> users = new List<User>(); 
 
-            List<string> users = new List<string>();
-
-            using (SqliteConnection connect = new SqliteConnection(GetConnectionString()))
+            using(SqliteConnection connection = new SqliteConnection(GetConnectionString())) 
             {
-                connect.Open();
-                using (SqliteCommand qry = connect.CreateCommand())
+                connection.Open(); 
+
+                string statement = "SELECT name FROM Users;"; 
+
+                using(SqliteCommand cmd = new SqliteCommand(statement, connection))
                 {
-                    qry.CommandText = @"SELECT * FROM Users";
-                    //qry.CommandType = CommandType.Text
-                    SqliteDataReader r = qry.ExecuteReader();
-
-                    while (r.Read())
+                    using(SqliteDataReader reader = cmd.ExecuteReader()) 
                     {
-                        //ImportedFiles.Add(Convert.ToString(r["FileName"]));
-
-                        //User u = new User(); 
-                        //u.name = (string)r["FileName"];
-
-
-                        //users.add(u); 
+                        //Gets the data while reading, add rows to users here
+                        //Console.WriteLine(rdr.GetInt32(0) + " " + rdr.GetString(1) + " " + rdr.GetInt32(2));
+                        // while(reader.Read()) {
+                        //     users.Add(reader.GetString(0)); 
+                        //}
                     }
                 }
+
+                connection.Close(); 
             }
 
-            if (users.Count == 0)
-            {
-                throw new Exception("List is empty");
-            }
-            else
-            {
-                return (users);
-            }
+            return users; 
         }
 
-        #endregion
+            #endregion
 
         #region Sets
 
@@ -54,9 +45,28 @@ namespace timepunch
 
         #region Inserts
 
+        public void InsertUser(User u) 
+        {
+
+            using(SqliteConnection connection = new SqliteConnection(GetConnectionString())) 
+            {
+                connection.Open(); 
+
+                string statement = "INSERT INTO User(name, email, password, salt, role) VALUES(" +
+                                    u.name + "," + u.passwordHash + ", salt, 0);"; 
+
+                using(SqliteCommand cmd = new SqliteCommand(statement, connection))
+                {
+                    cmd.ExecuteNonQuery(); 
+                }
+
+                connection.Close(); 
+            }
+        }
+
         #endregion
 
 
-    }
+        }
 
-}
+    }

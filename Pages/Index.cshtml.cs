@@ -12,6 +12,12 @@ namespace timepunch.Pages
         public void OnGet()
         {
 
+            DataAccess da = new DataAccess(); 
+
+            foreach(string s in da.GetUsers2())
+            {
+                Console.WriteLine(s); 
+            }
         }
     }
 }
