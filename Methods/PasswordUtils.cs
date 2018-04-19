@@ -6,30 +6,30 @@ namespace timepunch
 {
     public class PasswordUtils
     {
-        public static byte[] generateSalt()
+        public static string generateSalt()
         {
             byte[] salt = new byte[16];
             using (var rng = RandomNumberGenerator.Create())
             {
                 rng.GetBytes(salt);
             }
-            Console.WriteLine($"Salt: {Convert.ToBase64String(salt)}");
-            return salt;
+            string sSalt = Convert.ToBase64String(salt);
+            return sSalt;
         }
-        public static string passwordEncrypt(byte[] salt, string password)
+        public static string passwordEncrypt(string sSalt, string password)
         {
+            byte[] salt = Convert.FromBase64String(sSalt);
             string savedHash = Convert.ToBase64String(KeyDerivation.Pbkdf2(
                 password: password,
                 salt: salt,
                 prf: KeyDerivationPrf.HMACSHA1,
                 iterationCount: 10000,
                 numBytesRequested: 32));
-            Console.WriteLine($"Hashed: {savedHash}");
             return savedHash;
         }
-        public static bool checkPassword(string storedHash, byte[] salt, string password)
+        public static bool checkPassword(string storedHash, string sSalt, string password)
         {
-            string passedInHash = passwordEncrypt(salt, password);
+            string passedInHash = passwordEncrypt(sSalt, password);
             if (storedHash == passedInHash)
             {
                 return true;
