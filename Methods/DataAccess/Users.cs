@@ -9,7 +9,7 @@ namespace timepunch
     {
 
         #region Gets
-        public List<User> GetUsers() 
+        public static List<User> GetUsers() 
         {
             List<User> users = new List<User>(); 
 
@@ -17,17 +17,20 @@ namespace timepunch
             {
                 connection.Open(); 
 
-                string statement = "SELECT name FROM Users;"; 
+                string statement = "SELECT id, name, email, password, salt, role FROM Users;"; 
 
                 using(SqliteCommand cmd = new SqliteCommand(statement, connection))
                 {
                     using(SqliteDataReader reader = cmd.ExecuteReader()) 
                     {
-                        //Gets the data while reading, add rows to users here
-                        //Console.WriteLine(rdr.GetInt32(0) + " " + rdr.GetString(1) + " " + rdr.GetInt32(2));
-                        // while(reader.Read()) {
-                        //     users.Add(reader.GetString(0)); 
-                        //}
+
+                        User u = new User(); 
+                        u.id = reader.GetInt32(0); 
+                        u.name = reader.GetString(1); 
+                        u.email = reader.GetString(2);
+                        u.passwordHash = reader.GetString(3); 
+                        u.salt = reader.GetString(4); 
+                        u.r = User.role.Default; 
                     }
                 }
 
@@ -37,15 +40,66 @@ namespace timepunch
             return users; 
         }
 
+        public static User GetUserByEmail(string email) {
+            
+            User u = new User(); 
+
+            using(SqliteConnection connection = new SqliteConnection(GetConnectionString())) 
+            {
+                connection.Open(); 
+
+                string statement = 
+                "SELECT id, name, email, password, salt, role FROM Users WHERE email = " + email + ";"; 
+
+                using(SqliteCommand cmd = new SqliteCommand(statement, connection))
+                {
+                    using(SqliteDataReader reader = cmd.ExecuteReader()) 
+                    {
+
+                        u.id = reader.GetInt32(0); 
+                        u.name = reader.GetString(1); 
+                        u.email = reader.GetString(2);
+                        u.passwordHash = reader.GetString(3); 
+                        u.salt = reader.GetString(4); 
+                        u.r = User.role.Default; 
+                    }
+                }
+
+                connection.Close(); 
+            }
+
+            return u; 
+        }
+
             #endregion
 
         #region Sets
+
+        public static void UpdatePassword(User u, string newPassword) 
+        {
+
+            using(SqliteConnection connection = new SqliteConnection(GetConnectionString())) 
+            {
+                connection.Open(); 
+
+                string statement = "UPDATE User SET password = " + newPassword + 
+                                   " WHERE email = " + u.email + " ;"; 
+
+                using(SqliteCommand cmd = new SqliteCommand(statement, connection))
+                {
+                    cmd.ExecuteNonQuery(); 
+                }
+
+                connection.Close(); 
+            }
+        }
+
 
         #endregion
 
         #region Inserts
 
-        public void InsertUser(User u) 
+        public static void InsertUser(User u) 
         {
 
             using(SqliteConnection connection = new SqliteConnection(GetConnectionString())) 
