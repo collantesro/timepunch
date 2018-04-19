@@ -133,7 +133,7 @@ namespace timepunch
                     cmd.Parameters.AddWithValue("@email", u.Email);
                     cmd.Parameters.AddWithValue("@pass", u.PasswordHash);
                     cmd.Parameters.AddWithValue("@salt", u.Salt);
-                    cmd.Parameters.AddWithValue("@role", User.Roles.Default);
+                    cmd.Parameters.AddWithValue("@role", User.Roles.Unapproved);
                     
                     cmd.ExecuteNonQuery();
                 }

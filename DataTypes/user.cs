@@ -4,8 +4,8 @@ using System.Text;
 
 public class User
 {
-    public enum Roles { Default, Student, Professor };
-    public Roles Role { get; set; } = Roles.Default;
+    public enum Roles { Unapproved, Student, Professor, SiteAdmin };
+    public Roles Role { get; set; } = Roles.Unapproved;
     public string Name { get; set; } = "";
     public int Id { get; set; } = -1;
     public string PasswordHash { get; set; } = "";
