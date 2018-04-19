@@ -23,8 +23,10 @@ namespace timepunch
                 {
                     using (SqliteDataReader reader = cmd.ExecuteReader())
                     {
-                        while(reader.Read()){
-                            User u = new User(){
+                        while (reader.Read())
+                        {
+                            User u = new User()
+                            {
                                 Id = reader.GetInt32(0),
                                 Name = reader.GetString(1),
                                 Email = reader.GetString(2),
@@ -66,7 +68,8 @@ namespace timepunch
                     cmd.Parameters.AddWithValue("@e", email);
                     using (SqliteDataReader reader = cmd.ExecuteReader())
                     {
-                        if(reader.Read()){ // Returns false if a user with that email doesn't exist.
+                        if (reader.Read())
+                        { // Returns false if a user with that email doesn't exist.
                             u = new User()
                             {
                                 Id = reader.GetInt32(0),
@@ -97,7 +100,7 @@ namespace timepunch
             {
                 connection.Open();
 
-                if(String.IsNullOrEmpty(u.Email))
+                if (String.IsNullOrEmpty(u.Email))
                     throw new ArgumentNullException("Email is null or empty");
 
                 string statement = "UPDATE User SET password = @password WHERE email = @email ;";
@@ -134,7 +137,7 @@ namespace timepunch
                     cmd.Parameters.AddWithValue("@pass", u.PasswordHash);
                     cmd.Parameters.AddWithValue("@salt", u.Salt);
                     cmd.Parameters.AddWithValue("@role", User.Roles.Unapproved);
-                    
+
                     cmd.ExecuteNonQuery();
                 }
 

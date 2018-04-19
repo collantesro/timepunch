@@ -50,7 +50,7 @@ namespace timepunch
             {
                 app.UseExceptionHandler("/Error");
             }
-            
+
             app.UseSession();
             app.UseAuthentication();
             app.UseStaticFiles();

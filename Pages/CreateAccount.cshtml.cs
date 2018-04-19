@@ -13,23 +13,27 @@ namespace timepunch.Pages
 
         public IActionResult OnPost()
         {
-            if(ModelState.IsValid){
+            if (ModelState.IsValid)
+            {
                 var badPassword = false;
-                if(newUserData.Password.Length < 6){
+                if (newUserData.Password.Length < 6)
+                {
                     ModelState.AddModelError("", "Password is less than 6 characters.");
                     badPassword = true;
                 }
-                if(newUserData.Password != newUserData.ConfirmPassword){
+                if (newUserData.Password != newUserData.ConfirmPassword)
+                {
                     ModelState.AddModelError("", "Password and Confirm Password did not match.");
                     badPassword = true;
                 }
 
-                if(badPassword)
+                if (badPassword)
                     return Page();
 
                 newUserData.Email = newUserData.Email.ToLowerInvariant();
                 var exists = DataAccess.GetUserByEmail(newUserData.Email) != null;
-                if(exists){
+                if (exists)
+                {
                     ModelState.AddModelError("", "That email address has already been registered.");
                     return Page();
                 }
@@ -39,7 +43,8 @@ namespace timepunch.Pages
                 var salt = PasswordUtils.generateSalt();
                 var hash = PasswordUtils.passwordEncrypt(salt, newUserData.Password);
 
-                var user = new User(){
+                var user = new User()
+                {
                     Name = newUserData.Name,
                     Email = newUserData.Email,
                     Salt = salt,
@@ -49,7 +54,9 @@ namespace timepunch.Pages
                 DataAccess.InsertUser(user);
                 // If this succeeded, send them to Index, which redirects them to Login
                 return RedirectToPage("/Index");
-            } else {
+            }
+            else
+            {
                 ModelState.AddModelError("", "Required data is missing.");
                 return Page();
             }

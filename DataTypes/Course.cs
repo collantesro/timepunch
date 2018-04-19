@@ -2,10 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-public class Project
+public class Course
 {
     int id;
-    int course_ID;
-    string name;
+    int proj_ID;
     string desc;
+    string name;
 }
