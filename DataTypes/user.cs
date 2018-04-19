@@ -4,11 +4,11 @@ using System.Text;
 
 public class User
 {
-    public enum role {Default, Student, Professor}; 
-    public role r;
-    public string name {get;set;}
-    public int id {get;set;}
-    public string passwordHash {get;set;}
-    public string salt {get;set;}
-    public string email {get; set;}
+    public enum Roles { Default, Student, Professor };
+    public Roles Role { get; set; }
+    public string Name { get; set; }
+    public int Id { get; set; }
+    public string PasswordHash { get; set; }
+    public string Salt { get; set; }
+    public string Email { get; set; }
 }

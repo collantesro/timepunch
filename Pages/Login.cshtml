@@ -2,9 +2,13 @@
 @model LoginModel
 
 @{
-    ViewData["Title"] = "Login Page";
+    ViewData["Title"] = "Log In";
 }
+@* http://www.future-shock.net/blog/post/Creating-a-simple-login-in-ASP.NET-Core-2-using-Authentication-and-Authorization-NOT-Identity *@
 
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@*Partial View, the rest of the page should come from _Layout.cshtml*@
 <div class="content">
     <div class="header">
         <h1>Project time-clock login</h1>
@@ -12,28 +16,11 @@
         <br>
         <br>
     </div>
-    <form onsubmit="" action="" method="post">
-        <table align="center">
-            <tr>
-                <td>User Email</td>
-                <td>
-                    <input type="text" name="username" autofocus>
-                </td>
-            </tr>
-            <tr>
-                <td>Password</td>
-                <td>
-                    <input id="password" type="password" name="password">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <input type="submit">
-                </td>
-                <td>
-                    <a href="/CreateAccount">Create Account</a>
-                </td>
-            </tr>
-        </table>
+    <form method="post">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        Email: <input asp-for="loginData.Email"/><br/>
+        Password: <input asp-for="loginData.Password"/><br/>
+        <input type="submit" value="Login" />
+        @Html.AntiForgeryToken()
     </form>
 </div>
