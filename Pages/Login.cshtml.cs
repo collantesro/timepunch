@@ -52,7 +52,7 @@ namespace timepunch.Pages
         public class LoginData
         {
 
-            [Required]
+            [Required, DataType(DataType.EmailAddress)]
             public string Email { get; set; }
 
             [Required, DataType(DataType.Password)]

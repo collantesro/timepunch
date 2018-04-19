@@ -1,0 +1,50 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Open Sans", sans-serif;
+    color: #222;
+    padding: 1em;
+}
+
+.body-content{
+    margin-bottom: 2em;
+}
+
+hr{
+    border: 0;
+    height: 1px;
+    width: 50%;
+    margin: 0 auto;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+
+.center{
+    margin: 0 auto;
+    text-align: center;
+}
+
+.header{
+    margin-bottom: 1em;
+}
+
+.userForm{
+    width: 600px;
+    margin: 0 auto;
+}
+
+.userForm form{
+    display: inline-block;
+    text-align: right;
+}
+
+form input:not([type="submit"]){
+    width: 20em;
+    height: 2.5em;
+    border: 1px solid #222;
+    padding: 0.5em;
+    border-radius: 2px;
+}

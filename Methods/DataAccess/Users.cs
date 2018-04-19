@@ -43,6 +43,11 @@ namespace timepunch
             return users;
         }
 
+        /// <summary>
+        /// This method queries for a user by the specified email address.
+        /// </summary>
+        /// <param name="email">Email address of desired user.</param>
+        /// <returns>Returns a User object if found, null otherwise.</returns>
         public static User GetUserByEmail(string email)
         {
 
@@ -53,7 +58,8 @@ namespace timepunch
                 connection.Open();
 
                 string statement =
-                "SELECT id, name, email, password, salt, role FROM Users WHERE email = @e ;";
+                "SELECT id, name, email, password, salt, role FROM Users WHERE email = @e COLLATE NOCASE;";
+                // COLLATE NOCASE means search case-insensitive
 
                 using (SqliteCommand cmd = new SqliteCommand(statement, connection))
                 {
@@ -91,11 +97,15 @@ namespace timepunch
             {
                 connection.Open();
 
-                string statement = "UPDATE User SET password = " + newPassword +
-                                   " WHERE email = " + u.Email + " ;";
+                if(String.IsNullOrEmpty(u.Email))
+                    throw new ArgumentNullException("Email is null or empty");
+
+                string statement = "UPDATE User SET password = @password WHERE email = @email ;";
 
                 using (SqliteCommand cmd = new SqliteCommand(statement, connection))
                 {
+                    cmd.Parameters.AddWithValue("@password", newPassword);
+                    cmd.Parameters.AddWithValue("@email", u.Email);
                     cmd.ExecuteNonQuery();
                 }
 
@@ -115,7 +125,7 @@ namespace timepunch
             {
                 connection.Open();
 
-                string statement = "INSERT INTO User(name, email, password, salt, role) VALUES(@name, @email, @pass, @salt, @role);";
+                string statement = "INSERT INTO Users(name, email, password, salt, role) VALUES(@name, @email, @pass, @salt, @role);";
 
                 using (SqliteCommand cmd = new SqliteCommand(statement, connection))
                 {
@@ -123,7 +133,7 @@ namespace timepunch
                     cmd.Parameters.AddWithValue("@email", u.Email);
                     cmd.Parameters.AddWithValue("@pass", u.PasswordHash);
                     cmd.Parameters.AddWithValue("@salt", u.Salt);
-                    cmd.Parameters.AddWithValue("@role", u.Role);
+                    cmd.Parameters.AddWithValue("@role", User.Roles.Default);
                     
                     cmd.ExecuteNonQuery();
                 }

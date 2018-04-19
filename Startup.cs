@@ -32,6 +32,7 @@ namespace timepunch
             {
                 options.Conventions.AuthorizeFolder("/");
                 options.Conventions.AllowAnonymousToPage("/Login");
+                options.Conventions.AllowAnonymousToPage("/CreateAccount");
             });
 
             services.AddMvc().AddSessionStateTempDataProvider();

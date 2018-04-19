@@ -1,30 +1,26 @@
 @page
 @model CreateAccountModel
 
-<div class="content">
-    <div class="header"><h1>Create new account</h1></div>
-    <form onsubmit="" action="" method="post">
-        <table align="center">
-            <tr>
-                <td>Name</td>
-                <td><input type="text" name="firstname" autofocus></td>
-            </tr>
-            <tr>
-                <td>Email</td>
-                <td><input type="text" name="username"></td>
-            </tr>
-            <tr>
-                <td>Password</td>
-                <td><input id="password" type="password" name="password"></td>
-            </tr>
-            <tr>
-                <td>Confirm password</td>
-                <td><input type="password" name="confirmpassword"></td>
-            </tr>
-            <tr>
-                <td><input type="submit"></td>
-                <td><a href="login.html">Back to login</a></td>
-            </tr>
-        </table>
-    </form>
+@{
+    ViewData["Title"] = "Create Account";
+}
+
+@*Partial View, the rest of the page should come from _Layout.cshtml*@
+<div class="header center">
+    <h1>Timepunch: Create Account</h1>
+</div>
+<div class="userForm">
+    <div class="center">
+        <form method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <em>All fields are required:</em><br/>
+            Name: <input asp-for="newUserData.Name"/><br/>
+            Email: <input asp-for="newUserData.Email"/><br/>
+            Password: <input asp-for="newUserData.Password"/><br/>
+            Confirm Password: <input asp-for="newUserData.ConfirmPassword"/><br/>
+            <small>Password must be a minimum of 6 characters.</small><br/>
+            <input type="submit" value="Create Account" />
+            @Html.AntiForgeryToken()
+        </form>
+    </div>
 </div>
