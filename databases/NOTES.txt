@@ -1,7 +1,7 @@
 SQLite was chosen merely because it's portable.
 It allows all the members of the development group to modify the entire project on their own computer.
 It doesn't require the setup of a server.
-It's also simple.
+It's also simple, sometimes to its detriment.
 Please read the IMPORTANT note below about foreign keys.
 
 SQLite only has 5 core/true types. They are:
@@ -24,7 +24,7 @@ Dates and Time can be represented in different ways:
 The createdOn fields in all the tables use the INTEGER method, number of seconds since the Unix Epoch.
 
 IMPORTANT:
-SQLite's support for Foreign Keys depends on how it was compiled.  Even when compiled in, it must be enabled at runtime, every time.
+SQLite's support for Foreign Keys depends on how it was compiled.  Even when compiled in, it must be enabled at runtime, every time.  I assume that the Nuget package implementing the SQLite interface uses a version of SQLite with Foreign Keys.
 
 Execute the statement: PRAGMA foreign_keys=ON;
 Before inserting or deleting to enforce those constraints.
