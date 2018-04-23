@@ -1,0 +1,30 @@
+SQLite was chosen merely because it's portable.
+It allows all the members of the development group to modify the entire project on their own computer.
+It doesn't require the setup of a server.
+It's also simple.
+Please read the IMPORTANT note below about foreign keys.
+
+SQLite only has 5 core/true types. They are:
+ * TEXT
+ * INTEGER
+ * REAL (Floating Point)
+ * BLOB (Binary data)
+ * NULL
+
+There are other higher level "types", but SQLite seems to "decay" them into the above types.
+https://www.sqlite.org/datatype3.html
+
+It doesn't support stored procedures.
+
+Dates and Time can be represented in different ways:
+ * TEXT ("YYYY-MM-DD HH:MM:SS.SSS")
+ * REAL (Apparently the fractional number of days since November 24, 4714 BC)
+ * INTEGER (Seconds since the Unix Epoch: Jan 1, 1970 00:00:00Z)
+
+The createdOn fields in all the tables use the INTEGER method, number of seconds since the Unix Epoch.
+
+IMPORTANT:
+SQLite's support for Foreign Keys depends on how it was compiled.  Even when compiled in, it must be enabled at runtime, every time.
+
+Execute the statement: PRAGMA foreign_keys=ON;
+Before inserting or deleting to enforce those constraints.
