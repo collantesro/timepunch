@@ -20,7 +20,7 @@ tables = {
             desc TEXT NOT NULL,
             professor_id INTEGER NOT NULL,
             createdOn INTEGER DEFAULT (CAST(STRFTIME('%s', 'now') AS INTEGER)),
-            FOREIGN KEY(professor_id) REFERENCES User(id)
+            FOREIGN KEY(professor_id) REFERENCES Users(id)
         )""",
     "Projects": """CREATE TABLE IF NOT EXISTS Projects(
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -55,22 +55,6 @@ tables = {
             createdOn INTEGER DEFAULT (CAST(STRFTIME('%s', 'now') AS INTEGER)),
             FOREIGN KEY(user_id) REFERENCES USERS(id),
             FOREIGN KEY(course_id) REFERENCES Courses(id)
-        )""",
-    "Projects_To_Courses": """CREATE TABLE IF NOT EXISTS Projects_To_Courses(
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            project_id INTEGER NOT NULL,
-            course_id INTEGER NOT NULL,
-            createdOn INTEGER DEFAULT (CAST(STRFTIME('%s', 'now') AS INTEGER)),
-            FOREIGN KEY(project_id) REFERENCES Projects(id),
-            FOREIGN KEY(course_id) REFERENCES Courses(id)
-        )""",
-    "Groups_To_Projects": """CREATE TABLE IF NOT EXISTS Groups_To_Projects(
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            group_id INTEGER NOT NULL,
-            project_id INTEGER NOT NULL,
-            createdOn INTEGER DEFAULT (CAST(STRFTIME('%s', 'now') AS INTEGER)),
-            FOREIGN KEY(group_id) REFERENCES Groups(id),
-            FOREIGN KEY(project_id) REFERENCES Projects(id)
         )""",
     "Users_To_Groups": """CREATE TABLE IF NOT EXISTS Users_To_Groups(
             id INTEGER PRIMARY KEY AUTOINCREMENT,
