@@ -1,0 +1,195 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load("current", { packages: ["corechart"] });
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Group', 'Average time worked'],
+                ['Zesty Italian', 45],
+                ['Chuckleheads', 72],
+                ['Code Wizards', 37],
+                ['Egg', 56],
+                ['Furlords', 10]
+            ]);
+
+            var options = {
+                title: 'Average Group Work',
+                pieHole: 0.4,
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+            chart.draw(data, options);
+        }
+    </script>
+    <style>
+        #header {
+            height: 100px;
+            width: 300px;
+            left: 500px;
+            text-align: center;
+            position: absolute;
+        }
+
+        #redbox {
+            background-color: #84bfff;
+            height: 100%;
+            width: 200px;
+            position: absolute;
+            z-index: 2;
+            right: 0%;
+            top: 0%;
+            text-align: center;
+            border-left: 5px solid #0f82ff;
+        }
+
+        #donutchart {
+            top: 200px;
+            left: 630px;
+            width: 720px;
+            height: 400px;
+            position: absolute;
+        }
+
+        #showGroups {
+            background-color: lightgray;
+            border: 5px;
+            border-style: inset;
+            width: 550px;
+            height: 400px;
+            z-index: 1;
+            top: 320px;
+            left: 25px;
+            position: absolute;
+            font-family: Courier New, Courier, monospace;
+            text-align: left;
+            overflow-y: auto;
+        }
+        #showGroupMembers {
+            background-color: lightgray;
+            border: 5px;
+            border-style: inset;
+            width: 400px;
+            height: 200px;
+            z-index: 1;
+            top: 100px;
+            left: 100px;
+            position: absolute;
+            font-family: Courier New, Courier, monospace;
+            overflow-y: auto;
+        }
+
+        #addNew {
+            position: absolute;
+            top: 560px;
+        }
+
+        #transparentBlock {
+            z-index: 3;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            position: absolute;
+            top: 0%;
+            left: 0%;
+        }
+
+        #inputBox {
+            z-index: 4;
+            width: 400px;
+            height: 100px;
+            position: absolute;
+            top: 25%;
+            left: 30%;
+            background-color: #84bfff;
+            border: 3px solid #0f82ff;
+        }
+    </style>
+</head>
+<body>
+    <div id="header"><h1>Group Overview</h1></div>
+    <div id="redbox">
+        <br>
+        <h1>Main Menu</h1>
+        <b>
+            User Management<br><br>
+            Group Overview<br><br>
+            Time Sheet<br><br>
+            Log Out<br><br>
+        </b>
+    </div>
+    <div id="donutchart"></div>
+    <div id="showGroupMembers">
+        <table>
+            <tr>
+                <th>Group Members of EGG</th>
+            </tr>
+            <tr>
+                <td>
+                    Trevor Daniels<br>
+                    Devin Taylor<br>
+                    Christopher Adams<br>
+                    Davis Monson<br>
+                </td>
+            </tr>
+
+        </table>
+    </div>
+    <div id="showGroups">
+        <table width="550">
+            <tr>
+                <th>Group</th>
+                <th>Date</th>
+                <th>Total Group Hours</th>
+            </tr>
+            <tr>
+                <td>
+                    Egg<br>
+                    Chuckleheads<br>
+                    Code Wizards<br>
+                    Furlords<br>
+                    Zesty Italian<br>
+                    Chuckleheads<br>
+                    Egg<br>
+                    Chuckleheads<br>
+                    Furlords<br>
+                    Chuckleheads<br>
+                    Furlords<br>
+                </td>
+                <td>
+                    4-24-18<br>
+                    4-24-18<br>
+                    4-24-18<br>
+                    4-24-18<br>
+                    4-24-18<br>
+                    4-23-18<br>
+                    4-23-18<br>
+                    4-22-18<br>
+                    4-21-18<br>
+                    4-21-18<br>
+                    4-20-18<br>
+                </td>
+                <td>
+                    12<br>
+                    15<br>
+                    10<br>
+                    7<br>
+                    10<br>
+                    10<br>
+                    5<br>
+                    10<br>
+                    2<br>
+                    7<br>
+                    1<br>
+                </td>
+            </tr>
+
+        </table>
+    </div>
+</body>
+</html> 

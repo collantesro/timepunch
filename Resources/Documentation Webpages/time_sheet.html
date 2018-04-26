@@ -1,0 +1,167 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load("current", { packages: ["corechart"] });
+        google.charts.setOnLoadCallback(drawChart);
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Group Member', 'Hours on project'],
+                ['Matt', 21],
+                ['Roly', 35],
+                ['Kion', 27],
+                ['Daniel', 20],
+                ['Nasser', 3]
+            ]);
+
+            var options = {
+                title: 'Total work on project',
+                pieHole: 0.4,
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+            chart.draw(data, options);
+        }
+    </script>
+    <style>
+        #header {
+            height: 100px;
+            width: 300px;
+            left: 500px;
+            text-align: center;
+            position: absolute;
+        }
+        #redbox {
+            background-color: #84bfff;
+            height: 100%;
+            width: 200px;
+            position: absolute;
+            z-index: 2;
+            right: 0%;
+            top: 0%;
+            text-align: center;
+            border-left: 5px solid #0f82ff;
+        }
+        #donutchart {
+            top: 200px;
+            left: 630px;
+            width: 720px;
+            height: 400px;
+            position: absolute;
+        }
+        #showTimes {
+            background-color: lightgray;
+            border: 5px;
+            border-style: inset;
+            width: 630px;
+            height: 350px;
+            z-index: 1;
+            top: 200px;
+            position: absolute;
+            font-family: Courier New, Courier, monospace;
+            overflow-y: auto;
+        }
+        #addNew {
+            position: absolute;
+            top: 560px;
+        }
+        #transparentBlock {
+            z-index: 3;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            position: absolute;
+            top: 0%;
+            left: 0%;
+        }
+        #inputBox {
+            z-index: 4;
+            width: 500px;
+            height: 100px;
+            position: absolute;
+            top: 25%;
+            left: 30%;
+            background-color: #84bfff;
+            border: 3px solid #0f82ff;
+        }
+    </style>
+</head>
+<body>
+    <div id="inputBox">
+            <form onsubmit="" action="" method="post">
+                Editing existing time punch<br>
+                <table>
+                    <tr>
+                        <td>Time Punch ID:</td>
+                        <td><input type="text" name="punchID" size="1"></td>
+                        <td>Time Punch date:</td>
+                        <td><input type="text" name="punchDate" size="6"></td>
+                    </tr>
+                    <tr>
+                        <td>Time in:</td>
+                        <td><input type="text" name="timeIn" size="5"></td>
+                        <td>Time spent:</td>
+                        <td><input type="text" name="timeSpent" size="2"></td>
+                    </tr>
+                    <tr>
+                        <td>Description</td>
+                        <td><input type="text" name="description"></td>
+                        <td></td>
+                        <td><input type="submit" value="Close"></td>
+                    </tr>
+                </table>
+
+    </div>
+    <div id="transparentBlock"></div>
+    <div id="header"><h1>Time Clock</h1></div>
+    <div id="redbox">
+        <br>
+        <h1>Main Menu</h1>
+        <b>
+            User Management<br><br>
+            Group Overview<br><br>
+            Time Sheet<br><br>
+            Log Out<br><br>
+        </b>
+    </div>
+    <div id="donutchart"></div>
+    <div id="showTimes">
+        Clock# 23 | Matthew Bybee| 04-23-2018 | 10:30:00 to 12:00:00<br>
+        Clock# 23 | Matthew Bybee| 04-23-2018 | 10:30:00 to 12:00:00<br>
+        Clock# 23 | Matthew Bybee| 04-23-2018 | 10:30:00 to 12:00:00<br>
+        Clock# 23 | Matthew Bybee| 04-23-2018 | 10:30:00 to 12:00:00<br>
+        Clock# 23 | Matthew Bybee| 04-23-2018 | 10:30:00 to 12:00:00<br>
+        Clock# 23 | Matthew Bybee| 04-23-2018 | 10:30:00 to 12:00:00<br>
+        Clock# 23 | Matthew Bybee| 04-23-2018 | 10:30:00 to 12:00:00<br>
+        Clock# 23 | Matthew Bybee| 04-23-2018 | 10:30:00 to 12:00:00<br>
+        Clock# 23 | Matthew Bybee| 04-23-2018 | 10:30:00 to 12:00:00<br>
+        Clock# 23 | Matthew Bybee| 04-23-2018 | 10:30:00 to 12:00:00<br>
+        Clock# 23 | Matthew Bybee| 04-23-2018 | 10:30:00 to 12:00:00<br>
+        Clock# 23 | Matthew Bybee| 04-23-2018 | 10:30:00 to 12:00:00<br>
+        Clock# 23 | Matthew Bybee| 04-23-2018 | 10:30:00 to 12:00:00<br>
+        Clock# 23 | Matthew Bybee| 04-23-2018 | 10:30:00 to 12:00:00<br>
+        Clock# 23 | Matthew Bybee| 04-23-2018 | 10:30:00 to 12:00:00<br>
+        Clock# 23 | Matthew Bybee| 04-23-2018 | 10:30:00 to 12:00:00<br>
+        Clock# 23 | Matthew Bybee| 04-23-2018 | 10:30:00 to 12:00:00<br>
+        Clock# 23 | Matthew Bybee| 04-23-2018 | 10:30:00 to 12:00:00<br>
+        Clock# 23 | Matthew Bybee| 04-23-2018 | 10:30:00 to 12:00:00<br>
+        Clock# 23 | Matthew Bybee| 04-23-2018 | 10:30:00 to 12:00:00<br>
+        Clock# 23 | Matthew Bybee| 04-23-2018 | 10:30:00 to 12:00:00<br>
+        Clock# 23 | Matthew Bybee| 04-23-2018 | 10:30:00 to 12:00:00<br>
+        Clock# 23 | Matthew Bybee| 04-23-2018 | 10:30:00 to 12:00:00<br>
+        Clock# 23 | Matthew Bybee| 04-23-2018 | 10:30:00 to 12:00:00<br>
+        Clock# 23 | Matthew Bybee| 04-23-2018 | 10:30:00 to 12:00:00<br>
+        Clock# 23 | Matthew Bybee| 04-23-2018 | 10:30:00 to 12:00:00<br>
+        Clock# 23 | Matthew Bybee| 04-23-2018 | 10:30:00 to 12:00:00<br>
+        Clock# 23 | Matthew Bybee| 04-23-2018 | 10:30:00 to 12:00:00<br>
+        Clock# 23 | Matthew Bybee| 04-23-2018 | 10:30:00 to 12:00:00<br>
+    </div>
+    <div id="addNew">
+        <input type="submit" value="Punch In"><input type="submit" value="Punch Out"><input type="submit" value="Edit Existing">
+    </div>
+</body>
+</html> 

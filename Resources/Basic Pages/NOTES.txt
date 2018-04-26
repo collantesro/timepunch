@@ -1,0 +1,3 @@
+These html pages served as the "templates" from which the
+Razor Pages were started.  They were tweaked.
+
